@@ -1,0 +1,57 @@
+<!-- views/pages/home.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quilt-It</title>
+    <link rel="stylesheet" href="">
+    
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script> 
+	
+    <script src="quilt.js"></script>
+    <link rel="stylesheet" type="text/css" href="quilt.css">
+    
+    <script>
+        
+    </script>
+    
+    <style>
+    </style>
+</head>
+<body class="container" onload="loadDetails()">
+
+<header>
+    <h1>Quilt-It</h1>
+    <h2 id="welcome">Welcome </h2>
+</header>
+
+<body>
+	<hr>
+    <h3>My Quilts: </h3>
+    <select id="select_quilt">
+    </select>
+	
+	<button onclick="displayQuilt()">Display</button>
+	<button onclick="addQuilt">New Quilt</button>
+    
+	<hr>
+    <h3>My Squares</h3>
+    <div id="squares">
+    </div>
+	<br><br>
+	
+	<form id="fileForm" action="/addSquare" method="post" enctype="multipart/form-data">
+  		<input type="file" name="filename"><br>
+  		<input type="submit">
+  	</form>
+	<hr>
+</body>
+
+<footer>
+</footer>
+
+</body>
+</html>

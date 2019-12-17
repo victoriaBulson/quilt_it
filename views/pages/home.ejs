@@ -6,6 +6,33 @@
     <meta charset="UTF-8">
     <title>Quilt-It</title>
     <link rel="stylesheet" href="">
+    
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        function displayQuilt(){
+            var quilt_id = document.getElementById("display_quilt").value;
+            var params = {user:'sally', quilt_id: quilt_id};
+    
+            $.get('/getArrangement', params, function(data){
+                for (var i = 0; i < data[0].arrangement.length; i++){
+                    var square_id = data[0].arrangement[i];
+                    var params = {square_id: square_id}
+                    $.get('/getLink', params, function(data){
+                        
+                    });
+                    
+                    $("#div1").append(data[0].arrangement[i]);
+                console.log(data[0].arrangement[i]);
+                }
+            }, "json" );
+        }
+        
+        function displaySquares(){
+            
+        }
+    </script>
     <style>
     </style>
 </head>
@@ -15,15 +42,20 @@
     <h1>Quilt-It</h1>
     <h2>Welcome <%= user %></h2>
     
-    <h3>My Quilts: </h3>
-    <ul>
-        <% quilts.forEach(function(quilt) { %>
-            <li><%= quilt.name %></li>
-        <% }); %>
-    </ul>
 </header>
 
 <main>
+    <h3>My Quilts: </h3>
+    <select id="display_quilt">
+        <% quilts.forEach(function(quilt) { %>
+            <option value="<%= quilt.quilt_id %>"><%= quilt.name %></option>
+        <% }); %>
+    </select>
+    <div id="div1"></div>
+    <button onclick="displayQuilt()"> Display </button>
+    
+    <h3>My Squares</h3>
+    
     
 </main>
 

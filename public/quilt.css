@@ -1,0 +1,20 @@
+#squares img{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    width: 15vw;
+    height: 15vw;
+    margin: 1em;
+}
+
+.row{
+    display: flex;
+    justify-content: flex-start;
+	text-align: center;
+}
+
+.img{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+}

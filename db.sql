@@ -13,7 +13,8 @@ CREATE TABLE quilts(
 
 CREATE TABLE squares(
     square_id    SERIAL       PRIMARY KEY,
-    link         VARCHAR(20)  NOT NULL
+    link         VARCHAR(20)  NOT NULL,
+    designer     VARCHAR(20)  REFERENCES accounts(username)
 );
 
 
@@ -21,17 +22,17 @@ CREATE TABLE squares(
 INSERT INTO accounts (username, password)
 VALUES ('sally', 'iheartquilts');
 
-Insert INTO squares (link)
+Insert INTO squares (link, designer)
 VALUES
-('sqr1.png'),
-('sqr2.png'),
-('sqr3.png'),
-('sqr4.png'),
-('sqr5.png'),
-('sqr6.png'),
-('sqr7.png'),
-('sqr8.png'),
-('sqr9.png');
+('sqr1.png', 'sally'),
+('sqr2.jpeg', 'sally'),
+('sqr3.png', 'sally'),
+('sqr4.png', 'sally'),
+('sqr5.png', 'sally'),
+('sqr6.jpeg', 'sally'),
+('sqr7.png', 'sally'),
+('sqr8.png', 'sally'),
+('sqr9.png', 'sally');
 
 INSERT INTO quilts (designer, name, arrangement)
 VALUES
@@ -40,7 +41,7 @@ VALUES
 
 
 /* ROLES */
-CREATE USER quilter WITH PASSWORD 'get.stitches';
+CREATE USER quilter WITH PASSWORD 'getstitches';
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON accounts TO quilter;
 GRANT SELECT, INSERT, UPDATE, DELETE ON quilts TO quilter;
